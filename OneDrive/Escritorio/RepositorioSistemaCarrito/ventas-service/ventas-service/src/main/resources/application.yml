@@ -1,6 +1,6 @@
 spring:
   application:
-    name: carrito-service
+    name: ventas-service
   cloud:
     circuitbreaker:
       resilience4j:
@@ -10,13 +10,13 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://host.docker.internal:3306/carrito-service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://host.docker.internal:3306/ventas-service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: rootdocker
-    password: ""
+    password: 12345
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 server:
-  port: 8082
+  port: 8083
 
 eureka:
   client:
@@ -25,6 +25,4 @@ eureka:
 
 feign:
   hotelAPI:
-    url: productos-service
-  stockAPI:
-    url: stock-service
+    url: carrito-service

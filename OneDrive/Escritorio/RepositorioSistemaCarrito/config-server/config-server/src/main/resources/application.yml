@@ -12,3 +12,8 @@ spring:
           searchPaths: OneDrive/Escritorio/RepositorioSistemaCarrito/config-data
           username: ${GIT_USER}
           password: ${GIT_PASSWORD}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
