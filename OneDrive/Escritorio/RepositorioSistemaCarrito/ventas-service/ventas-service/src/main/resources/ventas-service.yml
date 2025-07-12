@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: ventas-service
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        enable-auto-configuration: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3306/ventas-service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: rootdocker
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+
+feign:
+  hotelAPI:
+    url: carrito-service

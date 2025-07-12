@@ -1,0 +1,75 @@
+version: '2.1'
+
+services:
+  eureka-server:
+    build:
+      context: ./eureka-server/eureka-server
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8761:8761"
+    networks:
+      - 'sistema-network'
+
+  carrito-service:
+    build:
+      context: ./carrito-service/carrito-service
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8082:8082"
+    networks:
+      - 'sistema-network'
+
+  productos-service:
+    build:
+      context: ./productos-service/productos-service
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8081:8081"
+    networks:
+      - 'sistema-network'
+
+  ventas-service:
+    build:
+      context: ./ventas-service/ventas-service
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8083:8083"
+    networks:
+      - 'sistema-network'
+
+  api-gateway-pato:
+    build:
+      context: ./api-gateway-pato/api-gateway-pato
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "443:443"
+    networks:
+      - 'sistema-network'
+
+  stock-service:
+    build:
+      context: ./stock-service/stock-service
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8085:8085"
+    networks:
+      - 'sistema-network'
+
+  config-server:
+    build:
+      context: ./config-server/config-server
+      dockerfile: Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8089:8089"
+    networks:
+      - 'sistema-network'
+    
+networks:
+  sistema-network:
